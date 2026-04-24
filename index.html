@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Прототип системы инвестпланирования</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Инвестпланирование · Макропараметры</h1>
+    <p>Прототип по требованиям раздела «2. Макропараметры».</p>
+  </header>
+
+  <main class="layout">
+    <aside class="panel">
+      <div class="panel-header">
+        <h2>Разделы</h2>
+        <button id="addSectionBtn">+ Раздел</button>
+      </div>
+      <ul id="sectionTree" class="tree"></ul>
+      <div class="section-actions">
+        <button id="renameSectionBtn">Переименовать</button>
+        <button id="deleteSectionBtn" class="danger">Удалить</button>
+      </div>
+    </aside>
+
+    <section class="panel content-panel">
+      <div class="panel-header">
+        <h2 id="recordsTitle">Записи</h2>
+        <div>
+          <button id="addRecordBtn">+ Запись</button>
+        </div>
+      </div>
+      <table>
+        <thead id="recordHead"></thead>
+        <tbody id="recordBody"></tbody>
+      </table>
+    </section>
+
+    <section class="panel form-panel">
+      <h2 id="formTitle">Создание записи</h2>
+      <form id="recordForm"></form>
+      <div class="form-actions">
+        <button id="saveRecordBtn" form="recordForm" type="submit">Сохранить</button>
+        <button id="resetFormBtn" type="button">Очистить</button>
+      </div>
+      <p id="formMessage" class="message"></p>
+    </section>
+  </main>
+
+  <template id="globalParamFormTemplate">
+    <label>Название * <input name="name" required /></label>
+    <label>Версия * <input name="version" required /></label>
+    <label>Автор * <input name="author" required /></label>
+    <label>Экономическая модель *
+      <select name="econModel" required></select>
+    </label>
+    <fieldset>
+      <legend>Цены по типам продукции *</legend>
+      <div class="grid-2">
+        <label>Нефть <select name="price_oil" required></select></label>
+        <label>Газ <select name="price_gas" required></select></label>
+        <label>Электроэнергия <select name="price_power" required></select></label>
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>Прочие данные (из раздела «Глобальные данные»)</legend>
+      <div id="otherDataEditor"></div>
+      <button type="button" id="addOtherDataBtn">+ Добавить параметр</button>
+    </fieldset>
+  </template>
+
+  <template id="simpleFormTemplate">
+    <label>Название * <input name="name" required /></label>
+    <label>Описание <input name="description" /></label>
+  </template>
+
+  <footer>
+    <small>Прототип: разделы, CRUD, валидация обязательных полей, подтверждение удаления, уникальность Название+Версия.</small>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
